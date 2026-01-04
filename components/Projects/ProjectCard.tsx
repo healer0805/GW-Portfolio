@@ -9,7 +9,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, image, url }: ProjectCardProps) {
   return (
-    <div className="group cursor-pointer p-10 text-center">
+    <div className="group cursor-pointer p-20 text-center">
       <div className="mb-4 overflow-hidden rounded-lg bg-white shadow-sm transition-all duration-300 group-hover:shadow-lg">
         <div className="relative aspect-video w-full overflow-hidden">
           <Image
