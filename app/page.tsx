@@ -1,0 +1,71 @@
+import Link from 'next/link'
+import ProjectsSection from '@/components/Projects/ProjectsSection'
+import TestimonialsSection from '@/components/Testimonials/TestimonialsSection'
+import CallToActionSection from '@/components/CTA/CallToActionSection'
+
+export default function Home() {
+  return (
+    <div className="min-h-screen">
+      <div className="px-8 py-12">
+        <div className="">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Left Column - Hero Text and Contact Info */}
+            <div className="flex flex-col">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-12 text-gray-800 leading-tight">
+                I&apos;m Glenn Wilmore, a freelancer that works with individuals, startups and small companies on projects big and small.
+              </h1>
+              <div className="mt-auto space-y-4 text-gray-800">
+                <div className="text-xl">
+                  <span className="font-semibold">Phone: </span>
+                  <a href="tel:07857224360" className="underline-wavy hover:text-gray-600 transition-colors font-medium">
+                    07857 224360
+                  </a>
+                </div>
+                <div className="text-xl">
+                  <span className="font-semibold">Email: </span>
+                  <a href="mailto:contact@example.com" className="underline-wavy hover:text-gray-600 transition-colors font-medium">
+                    contact@example.com
+                  </a>
+                </div>
+                <div className="text-xl">
+                  <span className="font-semibold">Office Hours: </span>
+                  <span className="font-medium">Mon-Fri 09:30-16:00</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - About/Details */}
+            <div className="flex flex-col space-y-8 text-gray-800 pt-64">
+              <p className="text-xl leading-relaxed font-medium">
+                I&apos;m a full-time freelance web designer and developer, with a passion for creating beautiful, functional websites. I graduated with a degree in Web Design & Development and have been providing professional web services to clients across the region since 2013.
+              </p>
+              <p className="text-xl leading-relaxed font-medium">
+                I specialize in creating 100% bespoke, responsive websites that not only look great but also perform exceptionally. As a flexible, dedicated, and professional freelancer, I understand that a well-designed, functional website is crucial for business growth. I work with modern technologies including WordPress CMS, ensuring your site is both beautiful and easy to manage.
+              </p>
+              <p className="text-xl leading-relaxed font-medium">
+                Whether you&apos;re an individual entrepreneur, a startup looking to establish your online presence, or a larger company needing a digital refresh, I&apos;m here to help. I work with a diverse range of clients and projects, always focused on delivering results that exceed expectations. If you have a project in mind, I&apos;d love to hear from you.
+              </p>
+              <div className="mt-8">
+                <Link
+                  href="/services"
+                  className="text-xl text-gray-800 underline-wavy hover:text-gray-600 transition-colors font-semibold"
+                >
+                  Explore Services
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Projects Section */}
+      <ProjectsSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Call to Action Section */}
+      <CallToActionSection />
+    </div>
+  )
+}
