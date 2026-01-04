@@ -1,8 +1,41 @@
+'use client'
+
+import { useRef, useEffect, useState } from 'react'
 import Link from 'next/link'
 
 export default function CallToActionSection() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <section className="py-16 px-2 border-t border-gray-300">
+    <section 
+      ref={sectionRef}
+      className={`py-16 px-2 border-t border-gray-300 fade-in ${isVisible ? 'visible' : ''}`}
+    >
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-5xl md:text-6xl font-bold mb-10 text-gray-800">
           Interested in starting a project?

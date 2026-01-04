@@ -1,52 +1,138 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import { testimonials } from '@/data/testimonials'
 
+function NextArrow(props: any) {
+  const { onClick, className, style } = props
+  return (
+    <button
+      onClick={onClick}
+      className={`slick-arrow slick-next testimonial-arrow testimonial-arrow-next ${className || ''}`}
+      style={style}
+      aria-label="Next testimonial"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9 18L15 12L9 6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  )
+}
+
+function PrevArrow(props: any) {
+  const { onClick, className, style } = props
+  return (
+    <button
+      onClick={onClick}
+      className={`slick-arrow slick-prev testimonial-arrow testimonial-arrow-prev ${className || ''}`}
+      style={style}
+      aria-label="Previous testimonial"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15 18L9 12L15 6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  )
+}
+
 export default function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const currentTestimonial = testimonials[currentIndex]
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipe: true,
+    swipeToSlide: true,
+    touchMove: true,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 7000,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    dotsClass: 'slick-dots testimonial-dots',
+  }
 
   return (
-    <section className="py-16 px-2 border-t border-gray-300">
-      <div className="max-w-4xl mx-auto text-center">
+    <section 
+      ref={sectionRef}
+      className={`py-16 px-2 border-t border-gray-300 fade-in ${isVisible ? 'visible' : ''}`}
+    >
+      <div className="max-w-4xl mx-auto text-center relative">
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 text-gray-800">
           What They Say...
         </h2>
 
-        {/* 2-column layout on desktop */}
-        <div className="grid grid-cols-1 gap-12 lg:gap-16">
-          {/* Left Column - Testimonial Content */}
-          <div className="flex flex-col justify-center">
-            <p className="plain-text text-gray-800 mb-10 text-center lg:text-left">
-              {currentTestimonial.quote}
-            </p>
-            <div className="text-center lg:text-left">
-              <p className="text-gray-800 font-bold text-lg mb-1">{currentTestimonial.author}</p>
-              <p className="text-gray-700 text-lg font-medium">{currentTestimonial.company}</p>
-            </div>
-          </div>
-
-          {/* Right Column - Additional Content or Empty */}
-          <div className="flex flex-col justify-center">
-            {/* This column can be used for additional content or left empty for spacing */}
-          </div>
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-12">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentIndex
-                  ? 'bg-gray-800'
-                  : 'bg-transparent border border-gray-400 hover:border-gray-600'
-              }`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
+        <div className="relative">
+          <Slider {...settings}>
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id}>
+                <div className="px-4">
+                  <p className="plain-text text-gray-800 mb-10 text-center lg:text-left">
+                    {testimonial.quote}
+                  </p>
+                  <div className="text-center lg:text-left">
+                    <p className="text-gray-800 font-bold text-lg mb-1">{testimonial.author}</p>
+                    <p className="text-gray-700 text-lg font-medium">{testimonial.company}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
     </section>

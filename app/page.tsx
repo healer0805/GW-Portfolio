@@ -12,7 +12,7 @@ export default function Home() {
             {/* Left Column - Hero Text and Contact Info */}
             <div className="flex flex-col">
               <h1 className="text-5xl md:text-5xl font-bold mb-12 text-gray-800 leading-tight">
-                I&apos;m Glenn Wilmore, a freelancer that works with individuals, startups and small companies on projects big and small.
+                I&apos;m Glenn Wilmore, a freelance web designer and developer focused on design and implementation, helping brands thrive in the digital world.
               </h1>
               <div className="text-gray-800 ">
                 <div className="plain-text text-left font-bold ">
