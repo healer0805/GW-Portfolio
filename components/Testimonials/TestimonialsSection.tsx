@@ -9,16 +9,16 @@ export default function TestimonialsSection() {
 
   return (
     <section className="py-16 px-2 border-t border-gray-300">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 text-gray-800">
           What They Say...
         </h2>
 
         {/* 2-column layout on desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 gap-12 lg:gap-16">
           {/* Left Column - Testimonial Content */}
           <div className="flex flex-col justify-center">
-            <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-10 text-center lg:text-left font-medium">
+            <p className="plain-text text-gray-800 mb-10 text-center lg:text-left">
               {currentTestimonial.quote}
             </p>
             <div className="text-center lg:text-left">

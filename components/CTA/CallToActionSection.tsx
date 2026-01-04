@@ -7,11 +7,11 @@ export default function CallToActionSection() {
         <h2 className="text-5xl md:text-6xl font-bold mb-10 text-gray-800">
           Interested in starting a project?
         </h2>
-        <p className="text-xl text-gray-800 mb-12 leading-relaxed font-medium">
+        <p className="plain-text text-gray-800 mb-12">
           If you have a project you&apos;d like to discuss, email me at{' '}
           <a
             href="mailto:contact@example.com"
-            className="text-gray-800 underline-wavy hover:text-gray-600 transition-colors font-semibold"
+            className="text-gray-800 underline-straight hover:text-gray-600 transition-colors font-semibold"
           >
             contact@example.com
           </a>{' '}
@@ -27,7 +27,7 @@ export default function CallToActionSection() {
             © Copyright 2023 Glenn Wilmore | Freelance Web Designer & Developer Surrey |{' '}
             <Link
               href="#"
-              className="text-gray-800 underline-wavy hover:text-gray-600 transition-colors"
+              className="text-gray-800 underline-straight hover:text-gray-600 transition-colors"
             >
               Privacy Policy
             </Link>

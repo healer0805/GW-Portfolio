@@ -24,7 +24,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-[#EBEBEB]/50 backdrop-blur-md z-50 border-b border-gray-300">
+    <nav className="fixed top-0 left-0 right-0 bg-[#D1D1D1]/50 backdrop-blur-md z-50">
       <div className="flex items-center justify-between px-2 py-4 max-w-7xl mx-auto">
         <Link 
           href="/" 
@@ -48,9 +48,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-lg text-gray-800 hover:text-gray-600 transition-colors font-semibold ${
-                  isActive ? 'underline-wavy' : ''
-                }`}
+                className={`font-switzer ${isActive ? 'underline-straight' : ''}`}
               >
                 {item.label}
               </Link>
