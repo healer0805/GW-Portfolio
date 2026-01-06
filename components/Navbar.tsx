@@ -41,7 +41,7 @@ export default function Navbar() {
             />
           </div>
         </Link>
-        <div className="flex gap-8">
+        <div className="flex gap-5">
           {navItems.map((item) => {
             const isActive = pathname === item.href
             return (

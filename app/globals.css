@@ -34,9 +34,9 @@ html {
     font-weight: bold;
     display: inline-block;
     text-align: left;
-    color: #2C2A2F;
-    letter-spacing: 0px;
-    font-size: 16px;
+    color: #202630;
+    letter-spacing: 0;
+    font-size: 13px;
     cursor: pointer;
     transition: background-color 0.5s ease;
   }
@@ -51,6 +51,7 @@ html {
   
   .underline-straight {
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     text-underline-offset: 0.25rem;
   }
   
@@ -109,5 +110,72 @@ html {
 .testimonial-dots li.slick-active button {
   /* background-color: #000; */
   border-color: #000;
+}
+
+/* Custom media query for 1440px width */
+/* Responsive breakpoints for project cards */
+/* At 1200px and above: px-2em, pt-2em, pb-4em */
+@media (min-width: 1200px) {
+  .project-card-1200 {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 2em;
+    padding-bottom: 4em;
+  }
+}
+
+/* At 1024px: pt-3em, pb-5em */
+@media (width: 1024px) {
+  .project-card-1024 {
+    padding-top: 2em;
+    padding-bottom: 7em;
+  }
+}
+
+/* At 800px and below: single column and p-3em */
+@media (max-width: 800px) {
+  .project-card-800 {
+    padding: 3em;
+    padding-bottom: 6em;
+  }
+}
+
+/* At exactly 1440px: revert to original layout padding */
+@media (width: 1440px) {
+  .project-card-1440 {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 3.5em;
+    padding-bottom: 12em;
+  }
+}
+
+/* Grid layout for projects section - 2 columns above 800px, 1 column at 800px and below */
+@media (min-width: 801px) {
+  .project-grid-800 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Project card title font size for width < 1200px */
+@media (max-width: 1199px) {
+  .project-title-responsive {
+    font-size: 30px;
+    line-height: 35px !important;
+  }
+}
+
+/* Remove vertical line between columns when width < 800px */
+@media (max-width: 799px) {
+  .project-column-border {
+    border-right: none !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+/* Project image shadow - consistent across all widths */
+.project-image-shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 

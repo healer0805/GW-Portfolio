@@ -44,19 +44,20 @@ export default function ProjectsSection() {
   return (
     <section className="py-16 px-8">
       <div className="">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 project-grid-800 gap-y-8 lg:gap-y-12">
           {projects.map((project, index) => {
             const rowIndex = getRowIndex(index)
             const isVisible = visibleCards.has(index)
+            const isLeftColumn = index % 2 === 0
             return (
               <div
                 key={project.id}
                 ref={(el) => {
                   cardRefs.current[index] = el
                 }}
-                className={`fade-in-row ${isVisible ? 'visible' : ''}`}
+                className={`fade-in-row ${isVisible ? 'visible' : ''} ${isLeftColumn ? 'md:border-r md:pr-6 lg:pr-8 border-gray-800 project-column-border' : 'md:pl-6 lg:pl-8 project-column-border'}`}
                 style={{
-                  transitionDelay: `${rowIndex * 0.15}s`,
+                  transitionDelay: `${rowIndex * 0.01}s`,
                 }}
               >
                 <ProjectCard
