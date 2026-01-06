@@ -48,7 +48,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-switzer ${isActive ? 'underline-straight' : ''}`}
+                className={`font-Switzer font-[16px] ${isActive ? 'underline-straight' : ''}`}
               >
                 {item.label}
               </Link>
